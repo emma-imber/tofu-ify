@@ -24,19 +24,36 @@ function getTofuPhoto() {
   return tofuPhotos[randomIndex];
 }
 
-const meatList = [
+const meatListLowerCase = [
   "chicken",
-  "Chicken",
   "beef",
-  "Beef",
   "lamb",
-  "Lamb",
   "pork",
-  "Pork",
   "sausage",
-  "Sausage",
   "fish",
-  "Fish"
+  "pancetta",
+  "bacon",
+  "meatballs",
+  "salmon",
+  "tuna",
+  "crab",
+  "mackerel"
+]
+
+const meatListUpperCase = [
+  "Chicken",
+  "Beef",
+  "Lamb",
+  "Pork",
+  "Sausage",
+  "Fish",
+  "Pancetta",
+  "Bacon",
+  "Meatballs",
+  "Salmon",
+  "Tuna",
+  "Crab",
+  "Mackerel"
 ]
 
 function replacePhotos() {
@@ -44,18 +61,27 @@ function replacePhotos() {
 
   for (let i = 0; i < docPics.length; i++) {
     let image = docPics[i].lastChild;
-    if (image?.alt.includes("chicken")) {
-      let replacementImg = image;
-      replacementImg.src = getTofuPhoto();
-      docPics[i].replaceChildren();
-      docPics[i].appendChild(replacementImg);
+    for(let m = 0; m < meatListLowerCase.length; m++) {
+      if (image?.alt.includes(meatListLowerCase[m])) {
+        let replacementImg = image;
+        replacementImg.src = getTofuPhoto();
+        docPics[i].replaceChildren();
+        docPics[i].appendChild(replacementImg);
+      }
     }
   }
 }
 
 function replaceText() {
-  document.body.innerHTML = document.body.innerHTML.replace(/chicken/g, "tofu");
-  document.body.innerHTML = document.body.innerHTML.replace(/Chicken/g, "Tofu");
+  for(let j = 0; j < meatListLowerCase.length; j++) {
+    var regexp = new RegExp(meatListLowerCase[j], "g");
+    document.body.innerHTML = document.body.innerHTML.replace(regexp, "tofu");
+  }
+
+  for(let k = 0; k < meatListUpperCase.length; k++) {
+    var regexp = new RegExp(meatListUpperCase[k], "g");
+    document.body.innerHTML = document.body.innerHTML.replace(regexp, "Tofu");
+  }
 }
 
 replacePhotos()
