@@ -17,6 +17,7 @@ function getTofuPhoto() {
     "https://i.guim.co.uk/img/media/c7d68cbdc8ea90792de9a38fcda289115cc26a05/0_777_3731_4185/master/3731.jpg?width=620&quality=45&dpr=2&s=none",
     "https://i.guim.co.uk/img/media/9be7857e3fdc260c293c02f16b9874bbc3938d72/0_1448_5792_5792/master/5792.jpg?width=1300&quality=45&dpr=2&s=none",
     "https://i.guim.co.uk/img/media/d37bb3eed9bdab3baa307d247f5fb8dd6e573b1d/0_0_3723_4375/master/3723.jpg?width=620&quality=45&dpr=2&s=none",
+    "https://i.guim.co.uk/img/media/eeee261af362d9f84ca608009c5f8724610f0874/0_0_3630_4266/master/3630.jpg?width=620&quality=45&dpr=2&s=none"
   ];
 
   let randomIndex = Math.floor(Math.random() * 17);
@@ -84,5 +85,23 @@ function replaceText() {
   }
 }
 
+function replaceRightAd() {
+  let rightAd = document.getElementById("dfp-ad--right");
+  rightAd.replaceChildren();
+  let newAd = new Image(300);
+  newAd.src = "https://shop.newsthump.com/wp-content/uploads/2022/10/Guardian-reading-tofu-eating-wokerati-T-shirt-red-768x900.jpg";
+  rightAd.appendChild(newAd);
+}
+
+function replaceTopAd() {
+  let topAd = document.getElementById("dfp-ad--top-above-nav");
+  topAd.replaceChildren();
+  let newAd = new Image(900);
+  newAd.src = chrome.runtime.getURL("topabovenav.png");
+  topAd.appendChild(newAd);
+}
+
 replacePhotos()
 replaceText()
+replaceRightAd()
+replaceTopAd()
