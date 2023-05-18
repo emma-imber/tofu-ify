@@ -115,13 +115,15 @@ function replaceRightAd() {
 
 function replaceTopAd() {
   let topAd = document.getElementById("dfp-ad--top-above-nav");
-  topAd.replaceChildren();
-  let newAd = new Image(1080);
-  if(topAd.classList.contains("ad-slot--fluid")) {
-    newAd.style = "margin-left:80px";
+  if(topAd) {
+    topAd.replaceChildren();
+    let newAd = new Image(1080);
+    if(topAd.classList.contains("ad-slot--fluid")) {
+      newAd.style = "margin-left:80px";
+    }
+    newAd.src = chrome.runtime.getURL("topabovenav.png");
+    topAd.appendChild(newAd);
   }
-  newAd.src = chrome.runtime.getURL("topabovenav.png");
-  topAd.appendChild(newAd);
 }
 
 replacePhotos()
