@@ -38,7 +38,16 @@ const meatListLowerCase = [
   "salmon",
   "tuna",
   "crab",
-  "mackerel"
+  "mackerel",
+  "mutton",
+  "goat",
+  "meat",
+  "duck",
+  "rabbit",
+  "venison",
+  "steak",
+  "ham",
+  "turkey"
 ]
 
 const meatListUpperCase = [
@@ -54,7 +63,16 @@ const meatListUpperCase = [
   "Salmon",
   "Tuna",
   "Crab",
-  "Mackerel"
+  "Mackerel",
+  "Mutton",
+  "Goat",
+  "Meat",
+  "Duck",
+  "Rabbit",
+  "Venison",
+  "Steak",
+  "Ham",
+  "Turkey"
 ]
 
 function replacePhotos() {
@@ -87,16 +105,21 @@ function replaceText() {
 
 function replaceRightAd() {
   let rightAd = document.getElementById("dfp-ad--right");
-  rightAd.replaceChildren();
-  let newAd = new Image(300);
-  newAd.src = "https://shop.newsthump.com/wp-content/uploads/2022/10/Guardian-reading-tofu-eating-wokerati-T-shirt-red-768x900.jpg";
-  rightAd.appendChild(newAd);
+  if(rightAd) {
+    rightAd.replaceChildren();
+    let newAd = new Image(300);
+    newAd.src = "https://shop.newsthump.com/wp-content/uploads/2022/10/Guardian-reading-tofu-eating-wokerati-T-shirt-red-768x900.jpg";
+    rightAd.appendChild(newAd);
+  }
 }
 
 function replaceTopAd() {
   let topAd = document.getElementById("dfp-ad--top-above-nav");
   topAd.replaceChildren();
-  let newAd = new Image(900);
+  let newAd = new Image(1080);
+  if(topAd.classList.contains("ad-slot--fluid")) {
+    newAd.style = "margin-left:80px";
+  }
   newAd.src = chrome.runtime.getURL("topabovenav.png");
   topAd.appendChild(newAd);
 }
