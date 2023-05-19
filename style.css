@@ -8,14 +8,21 @@ body {
   text-align: center;
 }
 
+img {
+  margin: auto;
+  width: 150px;
+  margin-top: 25px;
+}
+
 button {
   border-radius: 8px;
   background-color: lightgreen;
   border: none;
   text-decoration: none;
-  font-size: medium;
+  font-size: x-large;
   font-family: "Jua", sans-serif;
   width: 120px;
+  margin-top: 15px;
 }
 
 button:hover {
